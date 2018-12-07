@@ -1,0 +1,9 @@
+{
+    "dev": {
+        "django_settings": "brite.settings", 
+        "profile_name": "default", 
+        "project_name": "brite", 
+        "runtime": "python2.7", 
+        "s3_bucket": "zappa-yueq52h2k"
+    }
+}

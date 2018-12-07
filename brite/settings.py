@@ -22,10 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '+qf9mtdsb+e(9u_dnr=z9q=e3ai=n17f+r4((78hqy6=1n62_y'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.environ.get('LAMBDA_TASK_ROOT'):
+    DEBUG = False
+else:
+    DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,11 +42,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'core',
-    'userdata'
+    'userdata',
+    'zappa_django_utils'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -78,12 +82,21 @@ WSGI_APPLICATION = 'brite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if os.environ.get('LAMBDA_TASK_ROOT'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'zappa_django_utils.db.backends.s3sqlite',
+            'NAME': 'sqlite.db',
+            'BUCKET': 'zappa-db'
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'zappa_django_utils.db.backends.s3sqlite',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
@@ -118,10 +131,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-
-STATIC_URL = '/static/'
+if os.environ.get('LAMBDA_TASK_ROOT'):
+    STATIC_URL = '/dev/static/'
+else:
+    STATIC_URL = '/static/'
+STATIC_ROOT = 'static/'
 
 CORS_ORIGIN_ALLOW_ALL = True
