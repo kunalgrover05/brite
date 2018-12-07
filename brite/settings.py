@@ -133,6 +133,7 @@ USE_TZ = True
 
 if os.environ.get('LAMBDA_TASK_ROOT'):
     STATIC_URL = '/dev/static/'
+    WHITENOISE_STATIC_PREFIX = '/static/'
 else:
     STATIC_URL = '/static/'
 STATIC_ROOT = 'static/'
