@@ -10,6 +10,7 @@ Deployed on AWS Lambda using Zappa
 APIs:
 - `insuranceFields/(pk/)?`: View all or single Insurance form data
 - `userData/(pk/)?`: View or Create User Insurance form data
+API tests in `userData/tests.py`
 
 Dependencies:
 - Django
