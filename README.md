@@ -21,7 +21,8 @@ Dependencies:
 - Zappa (Deployments)
 - zappa-django-utils (Supporting SQLite3 backed up on S3)
 
-#### Usage details
+#### Usage details 
+Credentials: kunal / test1234
 - Create Enum Choices here: https://2lmqgnfs2l.execute-api.us-east-1.amazonaws.com/dev/admin/core/enumchoice/
 - Create Fields here: https://2lmqgnfs2l.execute-api.us-east-1.amazonaws.com/dev/admin/core/datafield/
 - Finally, select fields for an Insurance form here: https://2lmqgnfs2l.execute-api.us-east-1.amazonaws.com/dev/admin/core/insuranceform/
