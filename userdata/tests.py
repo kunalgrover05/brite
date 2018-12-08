@@ -308,9 +308,9 @@ class UserDataTest(TestCase):
 
         id = resp.data['id']
         # Verify created data
-        resp = client.get('/userData/' + str(id) + '/')
+        resp = client.get('/userData/')
 
-        self.assertEqual({
+        self.assertEqual([{
             'id': id,
             'dataFieldValues': [{
                 'field': 'Smoker',
@@ -328,4 +328,4 @@ class UserDataTest(TestCase):
             'insuranceName': 'Health',
             'insurance': 1,
             'user': 1
-        }, resp.data)
+        }], resp.data)

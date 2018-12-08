@@ -10,6 +10,15 @@ from core.models import DataField, EnumChoice, InsuranceForm, FieldType
 
 
 class DataFieldValue(models.Model):
+    """
+    A model which contains data input by users. The model validates whether the
+    data input is correct as per the Field type.
+
+    Model has the ability to hide the implementation details from users. Users need to use
+    the following functions:
+    - create(field, value): Method to create a new model object.
+    - value: Property to get the value of the model object.
+    """
     field = models.ForeignKey(DataField)
     char_val = models.CharField(max_length=190, null=True, blank=True)
     date_val = models.DateField(null=True, blank=True)
@@ -80,5 +89,10 @@ class DataFieldValue(models.Model):
 
 
 class UserInsuranceFormDetail(models.Model):
+    """
+    Model containing user related form data for an Insurance form.
+
+    Can access dateFieldValues reverse relationship to get all data values for this form.
+    """
     user = models.ForeignKey(get_user_model())
     insurance = models.ForeignKey(InsuranceForm)
