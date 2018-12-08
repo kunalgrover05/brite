@@ -20,6 +20,13 @@ Dependencies:
 - Zappa (Deployments)
 - zappa-django-utils (Supporting SQLite3 backed up on S3)
 
+#### Modelling documentation
+core:
+App contains the base models for Insurance. 
+
+userdata:
+App contains models for User input and filling Insurance forms.
+
 #### Usage details 
 Credentials: kunal / test1234
 - Create Enum Choices here: https://2lmqgnfs2l.execute-api.us-east-1.amazonaws.com/dev/admin/core/enumchoice/
