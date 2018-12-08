@@ -8,8 +8,8 @@ Low performance SQLite Database with S3 backups
 Deployed on AWS Lambda using Zappa
 
 APIs:
-- `insuranceFields/(pk/)?`: View all or single Insurance form data
-- `userData/(pk/)?`: View or Create User Insurance form data
+- `insuranceFields/(pk/)? GET`: View Insurance form data (All or single)
+- `userData/(pk/)? GET or POST`: View or Create User Insurance form data (All or single)
 
 API tests in `userData/tests.py`
 
