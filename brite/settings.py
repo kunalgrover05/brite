@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'drf_yasg',
     'corsheaders',
     'core',
     'userdata',
@@ -93,7 +94,7 @@ if os.environ.get('LAMBDA_TASK_ROOT'):
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'zappa_django_utils.db.backends.s3sqlite',
+            'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }

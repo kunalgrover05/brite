@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 
 # Create your views here.
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import serializers
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 
@@ -30,12 +32,16 @@ class InsuranceSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class InsuranceFieldsView(ListAPIView, RetrieveAPIView):
+class InsuranceFieldsView(ListAPIView):
+    """
+    get: List all Insurance forms created
+    """
     serializer_class = InsuranceSerializer
     queryset = InsuranceForm.objects.all()
 
-    def get(self, request, *args, **kwargs):
-        if kwargs.get('pk', None):
-            return self.retrieve(request, args, kwargs)
-        else:
-            return self.list(request, args, kwargs)
+class InsuranceFieldView(RetrieveAPIView):
+    """
+    get: Retrieve details for a single Insurance form
+    """
+    serializer_class = InsuranceSerializer
+    queryset = InsuranceForm.objects.all()

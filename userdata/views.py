@@ -91,12 +91,12 @@ class UserDataSerializer(serializers.ModelSerializer):
         model = UserInsuranceFormDetail
         fields = ('dataFieldValues', 'insurance', 'user', 'id', 'insuranceName')
 
-class UserDataView(ListAPIView, RetrieveAPIView, CreateAPIView):
+
+class UserDataView(ListAPIView, CreateAPIView):
+    """
+    get: Retrieve all User submitted Insurance form details
+
+    post: Create Insurance form details
+    """
     serializer_class = UserDataSerializer
     queryset = UserInsuranceFormDetail.objects.all()
-
-    def get(self, request, *args, **kwargs):
-        if kwargs.get('pk', None):
-            return self.retrieve(request, args, kwargs)
-        else:
-            return self.list(request, args, kwargs)

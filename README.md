@@ -16,6 +16,7 @@ Dependencies:
 - Whitenoise (To serve static files)
 - Django Rest Framework (For APIs)
 - django-cors-headers (To enable CORS)
+- drf-yasg (API documentation)
 - Zappa (Deployments)
 - zappa-django-utils (Supporting SQLite3 backed up on S3)
 
