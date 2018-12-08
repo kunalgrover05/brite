@@ -27,6 +27,10 @@ App contains the base models for Insurance.
 userdata:
 App contains models for User input and filling Insurance forms.
 
+ER diagram in same folder: ER.png.
+
+Model documentation is available inline.
+
 #### Usage details 
 Credentials: kunal / test1234
 - Create Enum Choices here: https://2lmqgnfs2l.execute-api.us-east-1.amazonaws.com/dev/admin/core/enumchoice/
