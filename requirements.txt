@@ -9,7 +9,7 @@ coreapi==2.3.3
 coreschema==0.0.4
 Django==1.11.17
 django-cors-headers==2.4.0
-djangorestframework==3.9.0
+djangorestframework==3.11.2
 docutils==0.14
 drf-yasg==1.11.1
 durationpy==0.5
